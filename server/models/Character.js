@@ -37,7 +37,7 @@ const CharacterSchema = new mongoose.Schema({
     type: Number,
     min: 1,
     required: false,
-  }, 
+  },
   dex: {
     type: Number,
     min: 1,
@@ -47,12 +47,12 @@ const CharacterSchema = new mongoose.Schema({
     type: Number,
     min: 1,
     required: false,
-  }, 
+  },
   inte: {
     type: Number,
     min: 1,
     required: false,
-  }, 
+  },
   wis: {
     type: Number,
     min: 1,
@@ -79,7 +79,7 @@ const CharacterSchema = new mongoose.Schema({
     min: 0,
     required: false,
   },
-    proB: {
+  proB: {
     type: Number,
     min: 2,
     required: false,
@@ -180,39 +180,39 @@ const CharacterSchema = new mongoose.Schema({
 });
 
 CharacterSchema.statics.toAPI = (doc) => ({
-    name: doc.name,
-    job: doc.job,   
-    level: doc.level,
-    str: doc.str,
-    dex: doc.dex,
-    con: doc.con,
-    inte:   doc.inte,
-    wis:    doc.wis,
-    cha:    doc.cha,
-    ac: doc.ac,
-    speed:  doc.speed,
-    initiative: doc.initiative,
-    proB:   doc.proB,
-    acro:   doc.acro,
-    animal: doc.animal,
-    arcana: doc.arcana,
-    athletics:  doc.athletics,
-    deception:  doc.deception,
-    history:    doc.history,
-    insight:    doc.insight,
-    intimidation:   doc.intimidation,
-    investigation:  doc.investigation,
-    medicine:   doc.medicine,
-    nature: doc.nature,
-    perception: doc.perception,
-    performance:    doc.performance,
-    persuasion: doc.persuasion,
-    religion:   doc.religion,
-    sleight:    doc.sleight,
-    stealth:    doc.stealth,
-    survival:   doc.survival,
-    spell:  doc.spell,
-    feats:  doc.feats,
+  name: doc.name,
+  job: doc.job,
+  level: doc.level,
+  str: doc.str,
+  dex: doc.dex,
+  con: doc.con,
+  inte: doc.inte,
+  wis: doc.wis,
+  cha: doc.cha,
+  ac: doc.ac,
+  speed: doc.speed,
+  initiative: doc.initiative,
+  proB: doc.proB,
+  acro: doc.acro,
+  animal: doc.animal,
+  arcana: doc.arcana,
+  athletics: doc.athletics,
+  deception: doc.deception,
+  history: doc.history,
+  insight: doc.insight,
+  intimidation: doc.intimidation,
+  investigation: doc.investigation,
+  medicine: doc.medicine,
+  nature: doc.nature,
+  perception: doc.perception,
+  performance: doc.performance,
+  persuasion: doc.persuasion,
+  religion: doc.religion,
+  sleight: doc.sleight,
+  stealth: doc.stealth,
+  survival: doc.survival,
+  spell: doc.spell,
+  feats: doc.feats,
 
 });
 
@@ -221,8 +221,7 @@ CharacterSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertID(ownerId),
   };
 
-  return CharacterModel.find(search).select('name job level str dex con inte wis cha ac speed initiative proB acro animal arcana athletics deception history insight intimidation investigation medicine nature perception performance persuasion religion sleight stealth survival spell feats').exec(callback);
-
+  return CharacterModel.find(search).select('name job level str ').exec(callback);
 };
 
 
