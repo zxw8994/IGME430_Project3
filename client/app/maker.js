@@ -6,10 +6,10 @@ let CharacterListClass;  // Domo List React UI class
 const handleCharacter = (e) => {
     e.preventDefault();
     
-    //$("#domoMessage").animate({width:'hide'},350);
-    
-    // NEWLY ADDED || $("#domoJob").val() == ''
-    
+        if($("#characterName").val() == '') { 
+        handleError("All fields are required");
+        return false;
+    }
     
     sendAjax('POST', $("#characterForm").attr("action"), $("#characterForm").serialize(), function() {
        characterRenderer.loadCharactersFromServer(); 
