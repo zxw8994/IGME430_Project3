@@ -56,6 +56,7 @@ nav:nth-child(1) {
     background-color: #a42828;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
+    float: right;
 }
 
 .characterForm label {
@@ -69,16 +70,18 @@ nav:nth-child(1) {
 
 .characterForm input[type=text] {
     float:left;
+    margin-right: 20px;
 }
 
 .makeCharacterSubmit {
     transition: background-color 0.4s ease;
     display: inline;
-    width: 90px;
+    width: 115px;
     /*background-color: #f9f9f9;*/
     border-radius: 2px;
     /*color: white;*/
     text-decoration: none;
+    margin-left: 20px;
 }
 
 .makeCharacterSubmit:link, .makeCharacterSubmit:visited, .makeCharacterSubmit:hover, .makeCharacterSubmit:active {
@@ -175,7 +178,6 @@ nav:nth-child(1) {
     font-size: 1.2em;
     font-weight: bold;
     color: red;
-    font-style: italic;
 }
 
 #character {
@@ -190,33 +192,104 @@ nav:nth-child(1) {
 }
 
 #characters {
-    width: 40%;
+    width: 65%;
+    height: 45%;
     min-width: 400px;
-    border: 2px solid #a42828;
-    border-radius: 4px;
     margin: 0 auto;
     margin-top: 100px;
 }
 
 .character {
     width: 95%;
+    height: 87%;
     margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
     border: 2px solid #a42828;
     border-radius: 4px;
-    background-color: #666666;
+    background-color: #ededed;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
 }
 
-.character:hover {
-    transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
-    transition: background-color 2.6s ease-out;
-    background-color: #808080;
+#attributeDiv {
+    width: 150px;
+    float: left;
 }
+
+.attribute {
+    width: 25px;
+}
+
+label.attribute {
+    padding-right: 5px;
+}
+#characterStr {
+    margin-left: 25px;
+}
+#characterDex {
+    margin-left: 19px;
+}
+#characterInte {
+    margin-left: 4px;
+}
+#characterWis {
+    margin-left: 26px;
+}
+#characterCha {
+    margin-left: 18px;
+}
+
+#stuffDiv {
+    width: 150px;
+    float: left;
+}
+.stuff {
+    width: 25px;
+}
+label.stuff {
+    padding-right: 14px;
+}
+#characterSpd {
+    margin-left: 41px;
+}
+#characterInit {
+    margin-left: 23px;
+}
+#characterProB {
+    margin-left: 103px;
+}
+
+#skillDiv {
+    float: left;
+    width: 410px;
+    column-count: 3;
+    column-gap: 35px;
+}
+
+#thingsDiv {
+    
+}
+
+#updateCharacter {
+    float: right;
+}
+
+#adds1 {
+    border: 2px solid black;
+    width: 150px;
+    height: 700px;
+    float: left;
+}
+
+#adds2 {
+    border: 2px solid black;
+    width: 150px;
+    height: 700px;
+    float: right;
+}
+
 
 img.characterFace {
     margin-left: 25px;

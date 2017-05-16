@@ -3,12 +3,8 @@
 var handleLogin = function handleLogin(e) {
     e.preventDefault();
 
-    $("#characterMessage").animate({ width: 'hide' }, 350);
+    //$("#characterMessage").animate({width:'hide'},350);
 
-    if ($("#user").val() == '' || $("#pass").val() == '') {
-        handleError("RAWR! Username or password is empty");
-        return false;
-    }
 
     console.log($("input[name=_csrf]").val());
 
@@ -23,12 +19,12 @@ var handleSignup = function handleSignup(e) {
     $("#characterMessage").animate({ width: 'hide' }, 350);
 
     if ($("#user").val() == '' || $("#pass").val() == '' || $("#pass2").val() == '') {
-        handleError("RAWR! All fields are required");
+        handleError("All fields are required");
         return false;
     }
 
     if ($("#pass").val() !== $("#pass2").val()) {
-        handleError("RAWR! Passwords do not match");
+        handleError("Passwords do not match");
         return false;
     }
 

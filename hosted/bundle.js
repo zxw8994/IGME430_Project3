@@ -11,10 +11,7 @@ var handleCharacter = function handleCharacter(e) {
     //$("#domoMessage").animate({width:'hide'},350);
 
     // NEWLY ADDED || $("#domoJob").val() == ''
-    if ($("#domoName").val() == '' || $("#domoJob").val() == '') {
-        handleError("All fields are required");
-        return false;
-    }
+
 
     sendAjax('POST', $("#characterForm").attr("action"), $("#characterForm").serialize(), function () {
         characterRenderer.loadCharactersFromServer();
@@ -130,9 +127,11 @@ var renderCharacterList = function renderCharacterList() {
         return React.createElement(
             "div",
             { key: character._id,
+
                 className: "character", name: "character",
-                method: "POST", action: "/deleteCharacter"
+                method: "POST", action: "/editor"
             },
+            React.createElement("input", { id: "updateCharacter", type: "submit", value: "Save(Not Working)" }),
             React.createElement(
                 "h3",
                 { className: "characterName" },
@@ -151,48 +150,216 @@ var renderCharacterList = function renderCharacterList() {
                 "h3",
                 { className: "characterLevel" },
                 " Level: ",
-                character.level = 1,
+                character.level,
                 " "
             ),
             React.createElement(
-                "label",
-                { htmlFor: "bio" },
-                "Character Bio: "
+                "div",
+                { id: "attributeDiv" },
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "str" },
+                    "Strength: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterStr", type: "text", name: "str", value: character.str, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "dex" },
+                    "Dextarity: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterDex", type: "text", name: "dex", value: character.dex, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "con" },
+                    "Constitution: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterCon", type: "text", name: "con", value: character.con, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "inte" },
+                    "Intelligence: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterInte", type: "text", name: "inte", value: character.inte, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "wis" },
+                    "Wisdom: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterWis", type: "text", name: "wis", value: character.wis, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "attribute", htmlFor: "cha" },
+                    "Charisma: "
+                ),
+                React.createElement("input", { className: "attribute", id: "characterCha", type: "text", name: "cha", value: character.cha, placeholder: "10" })
             ),
             React.createElement(
-                "textarea",
-                { className: "characterBio", name: "bio", rows: "10", cols: "15" },
-                " "
+                "div",
+                { id: "stuffDiv" },
+                React.createElement(
+                    "label",
+                    { className: "stuff", htmlFor: "ac" },
+                    "Armor Class: "
+                ),
+                React.createElement("input", { className: "stuff", id: "characterAC", type: "text", name: "ac", value: character.ac, placeholder: "10" }),
+                React.createElement(
+                    "label",
+                    { className: "stuff", htmlFor: "speed" },
+                    "Speed: "
+                ),
+                React.createElement("input", { className: "stuff", id: "characterSpd", type: "text", name: "spd", value: character.speed, placeholder: "30" }),
+                React.createElement(
+                    "label",
+                    { className: "stuff", htmlFor: "initiative" },
+                    "Initiative: "
+                ),
+                React.createElement("input", { className: "stuff", id: "characterInit", type: "text", name: "initiative", value: character.initiative, placeholder: "0" }),
+                React.createElement(
+                    "label",
+                    { className: "stuff", htmlFor: "proB" },
+                    "Proficiancy Bonus: "
+                ),
+                React.createElement("input", { className: "stuff", id: "characterProB", type: "text", name: "proB", value: character.proB, placeholder: "2" })
             ),
             React.createElement(
-                "label",
-                { htmlFor: "spell" },
-                "Spells: "
+                "div",
+                { id: "skillDiv" },
+                React.createElement(
+                    "label",
+                    { htmlFor: "acrobatics" },
+                    "Acrobatics: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "acro", name: "acrobatics" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "animal" },
+                    "Animal Handling: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "animal", name: "animal" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "arcana" },
+                    "Arcana: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "arcana", name: "arcana" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "athletics" },
+                    "Athletics: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "athletics", name: "athletics" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "deception" },
+                    "Deception: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "deception", name: "deception" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "history" },
+                    "History: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "history", name: "history" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "insight" },
+                    "Insight: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "insight", name: "insight" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "intimidation" },
+                    "Intimidation: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "intimidation", name: "intimidation" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "investigation" },
+                    "Investigation: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "investigation", name: "investigation" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "medicine" },
+                    "Medicine: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "medicine", name: "medicine" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "nature" },
+                    "Nature: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "nature", name: "nature" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "perception" },
+                    "Perception: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "perception", name: "perception" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "performance" },
+                    "Performance: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "performance", name: "performance" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "persuasion" },
+                    "Persuasion: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "persuasion", name: "persuasion" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "religion" },
+                    "Religion: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "religion", name: "religion" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "sleight" },
+                    "Sleight of Hand: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "sleight", name: "sleight" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "stealth" },
+                    "Stealth: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "stealth", name: "stealth" }),
+                React.createElement(
+                    "label",
+                    { htmlFor: "survival" },
+                    "Survival: "
+                ),
+                React.createElement("input", { type: "checkbox", className: "characterSkills", id: "survival", name: "survival" })
             ),
             React.createElement(
-                "textarea",
-                { className: "characterSpells", name: "spell", rows: "10", cols: "15" },
-                " "
+                "div",
+                { id: "thingsDiv" },
+                React.createElement(
+                    "label",
+                    { htmlFor: "spell" },
+                    "Spells: "
+                ),
+                React.createElement(
+                    "textarea",
+                    { className: "characterSpells", name: "spell", rows: "10", cols: "15" },
+                    "  "
+                ),
+                React.createElement(
+                    "label",
+                    { htmlFor: "feat" },
+                    "Features: "
+                ),
+                React.createElement(
+                    "textarea",
+                    { className: "characterFeats", name: "feat", rows: "10", cols: "15" },
+                    " "
+                )
             ),
-            React.createElement(
-                "label",
-                { htmlFor: "feat" },
-                "Feats: "
-            ),
-            React.createElement(
-                "textarea",
-                { className: "characterFeats", name: "feat", rows: "10", cols: "15" },
-                " "
-            ),
-            React.createElement(
-                "label",
-                { htmlFor: "equipment" },
-                "Inventory: "
-            ),
-            React.createElement("input", { type: "checkbox", className: "characterEquips", id: "equips", name: "equipment" }),
             React.createElement("input", { type: "hidden", name: "_id", value: character._id }),
             React.createElement("input", { id: "sendCharacter", type: "text", placeholder: "Enter Another Username" }),
-            React.createElement("input", { className: "sendCharacter", type: "submit", value: "Transfer Character(Not Working)" })
+            React.createElement("input", { className: "sendCharacter", type: "submit", value: "Copy Character(Not Working)" })
         );
     });
 
